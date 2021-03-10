@@ -1,5 +1,8 @@
 package com.zhdanko;
 
+import com.zhdanko.equipment.Fridge;
+import com.zhdanko.equipment.GasStove;
+import com.zhdanko.equipment.PlugIn;
 import com.zhdanko.line.Line;
 import com.zhdanko.students.Operation;
 import com.zhdanko.transaction.Example;
@@ -40,6 +43,16 @@ public class Main {
         Operation.fillList(markListSecond, 12);
         System.out.println(markListSecond);
         System.out.println(Operation.goodMark(markListSecond));
+
+        // Task 5
+        Fridge fridge = new Fridge("Fridge");
+        System.out.println(fridge.toString());
+        fridge.plugIn();
+        GasStove gasStove = new GasStove("Gas stove");
+        System.out.println(gasStove.toString());
+        gasStove.plugIn();
+        PlugIn mm = new Fridge("mm");
+        mm.plugIn();
 
 
 
