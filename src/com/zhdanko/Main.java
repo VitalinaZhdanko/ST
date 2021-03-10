@@ -5,6 +5,7 @@ import com.zhdanko.equipment.GasStove;
 import com.zhdanko.equipment.PlugIn;
 import com.zhdanko.file.OperationWithFile;
 import com.zhdanko.line.Line;
+import com.zhdanko.strings.OperationWithString;
 import com.zhdanko.students.OperationWithStudent;
 import com.zhdanko.transaction.Example;
 import com.zhdanko.transaction.TransactionExample;
@@ -61,6 +62,35 @@ public class Main {
 
         // Task 7
         OperationWithFile.printFiles("/Users/vitalina_zhdanko/Documents/Work");
+
+        // Task 8
+        String str = "la";
+        long startTime = System.currentTimeMillis();
+        OperationWithString.ConcatString(str);
+        long stopTime = System.currentTimeMillis();
+
+        long startTime2 = System.currentTimeMillis();
+        OperationWithString.ConcatStringBuilder(str);
+        long stopTime2 = System.currentTimeMillis();
+
+        if (stopTime - startTime > stopTime2 - startTime2) {
+            System.out.println("speed with help String is higher, than speed with help StringBuilder");
+        } else {
+            System.out.println("speed with help String is less, than speed with help StringBuilder");
+        }
+
+        // Task 9
+        String strHex = "0xFF aaaa0xFF 0xFFgg";
+        OperationWithString.FindHex(strHex);
+
+        // Task 10
+        String strTags = "<p> <p id=p1> tags tag";
+        OperationWithString.FindTags(strTags);
+
+        // Task 11
+        double number = 153.99;
+        System.out.printf("%d рубля %d копеек", (int) number, (int) ((number - (int) number) * 100));
+        System.out.println();
 
     }
 }
