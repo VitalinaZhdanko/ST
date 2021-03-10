@@ -1,5 +1,7 @@
 package com.zhdanko;
 
+import com.zhdanko.database.PaymentService;
+import com.zhdanko.database.model.Payment;
 import com.zhdanko.equipment.Fridge;
 import com.zhdanko.equipment.GasStove;
 import com.zhdanko.equipment.PlugIn;
@@ -18,6 +20,7 @@ import java.awt.Point;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -107,6 +110,22 @@ public class Main {
         System.out.println(bundleBy.getString("greeting"));
         System.out.println(bundleRu.getString("greeting"));
 
+        // Task 13
+        PaymentService paymentService = new PaymentService();
+
+        String queryGetBy = "select name, code, payment_data, amount from payment join recipient r on r.id = payment.recipient_id where amount > 10000";
+        paymentService.getPayments(queryGetBy);
+
+        // Task 14
+        paymentService.createPayments();
+        String queryGetAll = "select name, code, payment_data, amount from payment join recipient r on r.id = payment.recipient_id";
+        paymentService.getPayments(queryGetAll);
+
+        // Task 15
+        Payment payment = new Payment(20, 300, new Date(), 1);
+        paymentService.createPaymentsPrepStat(payment);
+        paymentService.getPayments(queryGetAll);
+
         // Task 16
         OperationWithXml.createXml("test.xml");
 
@@ -115,6 +134,5 @@ public class Main {
 
         // Task 19
         OperationWithXml.createHtml("test.xml", "test.xslt", "test.html");
-
     }
 }
