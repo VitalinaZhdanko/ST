@@ -15,6 +15,8 @@ import java.awt.Point;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Main {
 
@@ -92,5 +94,14 @@ public class Main {
         System.out.printf("%d рубля %d копеек", (int) number, (int) ((number - (int) number) * 100));
         System.out.println();
 
+        // Task 12
+        System.out.println(Locale.getDefault());
+        ResourceBundle bundleDefault = ResourceBundle.getBundle("com.zhdanko.resources.resource");
+        ResourceBundle bundleBy = ResourceBundle.getBundle("com.zhdanko.resources.resource", new Locale("be", "BY"));
+        ResourceBundle bundleRu = ResourceBundle.getBundle("com.zhdanko.resources.resource", new Locale("ru", "Ru"));
+
+        System.out.println(bundleDefault.getString("greeting"));
+        System.out.println(bundleBy.getString("greeting"));
+        System.out.println(bundleRu.getString("greeting"));
     }
 }
