@@ -13,12 +13,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -81,7 +81,6 @@ public class OperationWithXml {
 
     }
 
-
     public static void printXml(String filename) {
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -89,24 +88,32 @@ public class OperationWithXml {
 
             Node root = document.getDocumentElement();
             System.out.println(root.getNodeName());
+
             NodeList points = root.getChildNodes();
+
             for (int i = 0; i < points.getLength(); i++) {
                 Node point = points.item(i);
                 if (point.getNodeType() != Node.TEXT_NODE) {
-                    NodeList pointChildNodes = point.getChildNodes();
-                    for (int j = 0; j < pointChildNodes.getLength(); j++) {
-                        Node pointText = pointChildNodes.item(j);
-                        if (pointText.getNodeType() != Node.TEXT_NODE) {
-                            System.out.print(pointText.getNodeName() + " = " + pointText.getChildNodes().item(0).getTextContent()
-                                    + " " + ((Element) points.item(i)).getAttribute("unit") + ", ");
-                        }
-                    }
-                    System.out.println(" ");
+                    retrieveXmlChildNodes(point);
                 }
             }
+
         } catch (ParserConfigurationException | SAXException | IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    private static void retrieveXmlChildNodes(final Node point) {
+        NodeList pointChildNodes = point.getChildNodes();
+        for (int j = 0; j < pointChildNodes.getLength(); j++) {
+            Node pointText = pointChildNodes.item(j);
+            if (pointText.getNodeType() != Node.TEXT_NODE) {
+                System.out.print(pointText.getNodeName() + " = " + pointText.getChildNodes().item(0).getTextContent()
+                        + " " + ((Element) point).getAttribute("unit") + ", ");
+            }
+        }
+
+        System.out.println(" ");
     }
 
     public static void createHtml(String xmlFile, String xsltFile, String htmlFile) throws TransformerException {
