@@ -3,21 +3,21 @@ package com.zhdanko;
 import com.zhdanko.equipment.Fridge;
 import com.zhdanko.equipment.GasStove;
 import com.zhdanko.equipment.PlugIn;
+import com.zhdanko.file.OperationWithFile;
 import com.zhdanko.line.Line;
-import com.zhdanko.students.Operation;
+import com.zhdanko.students.OperationWithStudent;
 import com.zhdanko.transaction.Example;
-import com.zhdanko.transaction.Transaction;
 import com.zhdanko.transaction.TransactionExample;
 import com.zhdanko.transaction.TransactionProcessor;
 
 import java.awt.Point;
 import java.awt.Color;
-import java.lang.reflect.Method;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         // Task 1
         Line lineFirst = new Line(new Point(1, 1), new Point(3, 3), new Color(1, 1, 1), 2);
@@ -33,16 +33,16 @@ public class Main {
 
         // Task 3
         ArrayList<Integer> markListFirst = new ArrayList<>();
-        Operation.fillList(markListFirst, 10);
+        OperationWithStudent.fillList(markListFirst, 10);
         System.out.println(markListFirst);
-        Operation.removeBadMark(markListFirst, 4);
+        OperationWithStudent.removeBadMark(markListFirst, 4);
         System.out.println(markListFirst);
 
         // Task 4
         ArrayList<Integer> markListSecond = new ArrayList<>();
-        Operation.fillList(markListSecond, 12);
+        OperationWithStudent.fillList(markListSecond, 12);
         System.out.println(markListSecond);
-        System.out.println(Operation.goodMark(markListSecond));
+        System.out.println(OperationWithStudent.goodMark(markListSecond));
 
         // Task 5
         Fridge fridge = new Fridge("Fridge");
@@ -54,7 +54,13 @@ public class Main {
         PlugIn mm = new Fridge("mm");
         mm.plugIn();
 
+        // Task 6
+        OperationWithFile.writeToFile("fileNumbers.txt");
+        OperationWithFile.printNumbers("fileNumbers.txt");
+        System.out.println(OperationWithFile.average("fileNumbers.txt"));
 
+        // Task 7
+        OperationWithFile.printFiles("/Users/vitalina_zhdanko/Documents/Work");
 
     }
 }

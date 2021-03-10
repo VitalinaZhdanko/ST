@@ -1,16 +1,16 @@
 package com.zhdanko.students;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ListIterator;
 
-public class Operation {
-    public static void fillList(ArrayList<Integer> mark, int count) {
+public class OperationWithStudent {
+    public static void fillList(List<Integer> mark, int count) {
         for (int i = 0; i < count; i++) {
             mark.add(i, (int) (Math.random() * 10 + 1));
         }
     }
 
-    public static void removeBadMark(ArrayList<Integer> mark, int badMark) {
+    public static void removeBadMark(List<Integer> mark, int badMark) {
         ListIterator<Integer> iterator = mark.listIterator();
         while (iterator.hasNext()) {
             if (iterator.next() < badMark) {
@@ -20,7 +20,7 @@ public class Operation {
         // mark.removeIf(m -> m < badMark);
     }
 
-    public static int goodMark(ArrayList<Integer> mark) {
+    public static int goodMark(List<Integer> mark) {
         int goodMark = 0;
         ListIterator<Integer> iterator = mark.listIterator();
         while (iterator.hasNext()) {
