@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<coordinates>
+    <point unit="cm">
+        <x>30</x>
+        <y>25</y>
+    </point>
+    <point unit="mm">
+        <x>20</x>
+        <y>15</y>
+    </point>
+    <point unit="px">
+        <x>10</x>
+        <y>5</y>
+    </point>
+</coordinates>
