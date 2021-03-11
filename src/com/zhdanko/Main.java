@@ -9,8 +9,6 @@ import com.zhdanko.file.OperationWithFile;
 import com.zhdanko.finalTask.ParkOperation;
 import com.zhdanko.finalTask.model.Park;
 import com.zhdanko.finalTask.model.Plants;
-import com.zhdanko.finalTask.model.Tree;
-import com.zhdanko.finalTask.model.TreeKind;
 import com.zhdanko.line.Line;
 import com.zhdanko.strings.OperationWithString;
 import com.zhdanko.students.OperationWithStudent;
@@ -20,19 +18,15 @@ import com.zhdanko.transaction.TransactionProcessor;
 import com.zhdanko.xml.OperationWithXml;
 
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.awt.Point;
 import java.awt.Color;
-import java.io.File;
 import java.io.IOException;
-import java.io.LineNumberInputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import javax.xml.bind.JAXBContext;
 
 public class Main {
 
@@ -147,7 +141,11 @@ public class Main {
 
         // Task 20
         Plants plants = ParkOperation.parseXml("plants.xml");
-        ParkOperation.plantTree(plants);
+
+        Park park = new Park();
+        ParkOperation.plantTree(plants, park);
+
+        ParkOperation.printInfo("outputInfo.xml", park);
     }
 
 }
