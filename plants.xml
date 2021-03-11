@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plants>
+    <trees>
+        <tree type="пихта">
+            <kind>
+                <id>1</id>
+                <sort>бальзамическая</sort>
+                <price>35</price>
+            </kind>
+            <kind>
+                <id>2</id>
+                <sort>одноцветная</sort>
+                <price>14</price>
+            </kind>
+            <kind>
+                <id>3</id>
+                <sort>Фрезера</sort>
+                <price>3</price>
+            </kind>
+            <kind>
+                <id>4</id>
+                <sort>корейская</sort>
+                <price>42</price>
+            </kind>
+            <kind>
+                <id>5</id>
+                <sort>гималайская</sort>
+                <price>109</price>
+            </kind>
+            <kind>
+                <id>6</id>
+                <sort>китайская</sort>
+                <price>109</price>
+            </kind>
+            <kind>
+                <id>7</id>
+                <sort>американская</sort>
+                <price>109</price>
+            </kind>
+        </tree>
+    </trees>
+</plants>

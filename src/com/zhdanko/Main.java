@@ -6,6 +6,11 @@ import com.zhdanko.equipment.Fridge;
 import com.zhdanko.equipment.GasStove;
 import com.zhdanko.equipment.PlugIn;
 import com.zhdanko.file.OperationWithFile;
+import com.zhdanko.finalTask.ParkOperation;
+import com.zhdanko.finalTask.model.Park;
+import com.zhdanko.finalTask.model.Plants;
+import com.zhdanko.finalTask.model.Tree;
+import com.zhdanko.finalTask.model.TreeKind;
 import com.zhdanko.line.Line;
 import com.zhdanko.strings.OperationWithString;
 import com.zhdanko.students.OperationWithStudent;
@@ -14,19 +19,24 @@ import com.zhdanko.transaction.TransactionExample;
 import com.zhdanko.transaction.TransactionProcessor;
 import com.zhdanko.xml.OperationWithXml;
 
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.awt.Point;
 import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
+import java.io.LineNumberInputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.xml.bind.JAXBContext;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, TransformerException, ParserConfigurationException {
+    public static void main(String[] args) throws IOException, TransformerException, ParserConfigurationException, JAXBException {
 
         // Task 1
         Line lineFirst = new Line(new Point(1, 1), new Point(3, 3), new Color(1, 1, 1), 2);
@@ -134,5 +144,11 @@ public class Main {
 
         // Task 19
         OperationWithXml.createHtml("test.xml", "test.xslt", "test.html");
+
+        // Task 20
+        Plants plants = ParkOperation.parseXml("plants.xml");
+        ParkOperation.plantTree(plants);
     }
+
 }
+
